@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<!-- head is for metadata (data about data). metadata is data abou the HTML document.
+        meta data is not displayed -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- used to represent the metatdata of the website. can be used to define various
+        attributes about your website and also make it responsive  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- simply the name on the tab of your website -->
+    <title>Peter Kallos' Website</title>
+    <!-- link tag used to link css file. also used to provide the small icon in the
+            browser tab for the logo (good website for generating that logo/icon:
+            https://favicon.io/favicon-generator/ -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon (custom tab icon) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script defer src="main.js"></script>
+</head>
+
+<!-- TODO:  
+                - cool banner/interactive for header
+                - loading screen
+                - scroll bar design
+                - responsive design (mobile screen size)
+                - light mode?
+             -->
+
+<body>
+    <!-- div = divider (content block), fills out whole screen left to right (CSS can change that)-->
+    <!-- semantic tags: 
+            - are all basically div tags but have specific use cases
+            - introduced to avoid having to always use divs
+            - ex: header, nav, section, footer (all these are divs but allows us to describe our webpage
+                in a way that it's a lot easier to read) -->
+
+    <!--
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>-->
+
+    <div id="cursor-effect"></div>
+
+    <!-- Nav bar -->
+    <header>
+        <nav id="navbar" class="sticky">
+            <ul>
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Intro -->
+    <section id="intro">
+        <div class="info">
+            <div>
+                <h2 class="hidden-left intro-anim-intro">My Name is Peter Kallos</h2>
+                <p class="hidden-right intro-anim-intro">an undergraduate computer science student with a passion for software and all things technology.
+                </p>
+            </div>
+            <ul>
+                <!-- HTML -->
+                <li class="hidden-left intro-anim-button"><a href="https://github.com/KallosP" target="_blank"><button class="button-27 pulseBox"
+                            role="button">GitHub</button></a></li>
+                <li class="hidden-right intro-anim-button"><a href="https://www.linkedin.com/in/peter-kallos/" target="_blank"><button
+                            class="button-27 pulseBox" role="button">LinkedIn</button></a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="title hidden-left">My Work</h2>
+        <div>
+            <div class="card pulseBox hidden-right proj-anim">
+                <div>
+                    <h3>Interactive Campus Map</h3>
+                    <h4>
+                        <ul>
+                            <li>Tools:</li>
+                            <li><img class="logo" src="/images/android-studio.svg" alt="Android Studio"
+                                    title="Android Studio"></li>
+                            <li><img class="logo" src="/images/java.svg" alt="Java" title="Java"></li>
+                            <li><img class="logo" src="/images/figma.svg" alt="Figma" title="Figma"></li>
+                            <li><img class="logo" src="/images/trello.svg" alt="Trello" title="Trello"></li>
+                            <li><img class="logo" src="/images/github.svg" alt="GitHub" title="GitHub"></li>
+                            <li><img class="logo" src="/images/flutter.svg" alt="Flutter" title="Flutter"></li>
+                            <li><img class="logo" src="/images/dart.svg" alt="Dart" title="Dart"></li>
+                        </ul>
+                    </h4>
+                    <p>Led a team of 8 student developers, distributed tasks using Trello, and utilized Android
+                        Studio
+                        IDE and GitHub for creation and collaboration, resulting in a successful closed alpha launch
+                        and
+                        funding from Northrop Grumman for $10,000. Integrated Google Maps SDK for Android; used the
+                        Locations API and its Fused Location Provider to display the user's updated current
+                        location,
+                        created filters for all POI types, implemented dynamic POIs within a 100-meter radius of the
+                        user, and displayed nearest parking based on calculations between user and parking lot
+                        coordinates. Migrated from native Android to Flutter app for iOS compatibility.</p>
+                    <a href="https://github.com/AVC-CS-Committee/InteractiveCampusMap" target="_blank"><button
+                            class="button-27 pulseBox">GitHub</button></a>
+                </div>
+                <figure>
+                    <div>
+                        <img src="images/map-photo.jpg" alt="Map Image">
+                    </div>
+                </figure>
+            </div>
+            <div class="card pulseBox hidden-left proj-anim">
+                <div>
+                    <h3>Virtual World</h3>
+                    <h4>
+                        <ul>
+                            <li>Tools:</li>
+                            <li><img class="logo" src="/images/java.svg" alt="Java" title="Java"></li>
+                            <li><img class="logo" src="/images/intellij-idea.svg" alt="IntelliJ" title="IntelliJ">
+                            </li>
+                        </ul>
+                    </h4>
+                    <p>Optimized pathfinding functionality by implementing a custom A* search algorithm, enhancing
+                        navigation for various entities within a 2D simulated world. Refactored large codebase
+                        adhering
+                        to object-oriented design standards; improved code maintainability, readability, and
+                        scalability.</p>
+                    <a href="https://github.com/KallosP/Virtual-World" target="_blank"><button
+                            class="button-27 pulseBox">GitHub</button></a>
+                </div>
+                <figure>
+                    <div>
+                        <img src="images/virtual_world.jpg" alt="Virtual World Image">
+                    </div>
+                </figure>
+            </div>
+            <div class="card pulseBox hidden-right proj-anim">
+                <div>
+                    <h3>Text-Based RPG</h3>
+                    <h4>
+                        <ul>
+                            <li>Tools:</li>
+                            <li><img class="logo" src="/images/java.svg" alt="Java" title="Java"></li>
+                            <li><img class="logo" src="/images/replit.svg" alt="Replit" title="Replit"></li>
+                            <li><img class="logo" src="/images/github.svg" alt="GitHub" title="GitHub"></li>
+                        </ul>
+                    </h4>
+                    <p>Collaborated with a team of 2 other student developers to create a text-based roll playing
+                        game
+                        in Java using Replit. Implemented an item management system used in the player’s inventory
+                        and
+                        made dynamic player health modifications via object-oriented programming methodology. Other
+                        features include a combat system, character creation, and travel system.</p>
+                    <a href="https://replit.com/@KahMei/TTRPG-Group#.replit" target="_blank"><button
+                            class="button-27 pulseBox">Demo</button></a>
+                </div>
+                <figure>
+                    <div>
+                        <img src="images/sword.jpg" alt="Sword">
+                    </div>
+                </figure>
+            </div>
+            <div class="card pulseBox hidden-left proj-anim">
+                <div>
+                    <h3>Dice 10,000</h3>
+                    <h4>
+                        <ul>
+                            <li>Tools:</li>
+                            <li><img class="logo" src="/images/java.svg" alt="Java" title="Java"></li>
+                            <li><img class="logo" src="/images/github.svg" alt="GitHub" title="GitHub"></li>
+                        </ul>
+                    </h4>
+                    <p>Utilized object-oriented programming methodology to develop four bots and a dynamic point
+                        distribution system. Implemented a custom rubber band system to maintain balanced player
+                        point
+                        earnings and created a user-friendly selection menu; ensured input validation throughout the
+                        program. Developed a dynamic dice tracker using an ArrayList for easy modification and
+                        implemented a dice combination search to award points based on valid combinations.</p>
+                    <a href="https://github.com/KallosP/DiceGame" target="_blank"><button
+                            class="button-27 pulseBox">GitHub</button></a>
+                </div>
+                <figure>
+                    <div>
+                        <img src="images/dice.jpg" alt="Dice">
+                    </div>
+                </figure>
+            </div>
+    </section>
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="title hidden-right">Skills</h2>
+        <div>
+            <ul>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/java.svg" alt="Java">
+                        <figcaption>Java</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/c-programming.svg" alt="C">
+                        <figcaption>C</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/c++.svg" alt="C++">
+                        <figcaption>C++</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/c-sharp.svg" alt="C#">
+                        <figcaption>C#</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/html-language.svg" alt="HTML">
+                        <figcaption>HTML</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/css-language.svg" alt="CSS">
+                        <figcaption>CSS</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/python.svg" alt="Python">
+                        <figcaption>Python</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/dart.svg" alt="Dart">
+                        <figcaption>Dart</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/flutter.svg" alt="Flutter">
+                        <figcaption>Flutter</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/github.svg" alt="GitHub">
+                        <figcaption>GitHub</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/git.svg" alt="Git">
+                        <figcaption>Git</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/ubuntu.svg" alt="Ubuntu">
+                        <figcaption>Ubuntu</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/android-studio.svg" alt="Android Studio">
+                        <figcaption>Android Studio</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/neovim.svg" alt="Neovim">
+                        <figcaption>Neovim</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/unity.svg" alt="Unity">
+                        <figcaption>Unity</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/trello.svg" alt="Trello">
+                        <figcaption>Trello</figcaption>
+                    </figure>
+                </li>
+                <li class="hidden-left skill-anim">
+                    <figure>
+                        <img src="/images/figma.svg" alt="Figma">
+                        <figcaption>Figma</figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- Education -->
+    <section id="education">
+        <h2 class="title hidden-right">Education</h2>
+        <div id="ed-card" class="card pulseBox hidden-left">
+            <figure>
+                <img src="/images/CalPoly_Seal.png" alt="Cal Poly Seal">
+            </figure>
+            <div>
+                <h3>California Polytechnic State University, San Luis Obispo</h3>
+                <p>Bachelor of Science, Computer Science</p>
+                <p>Sep 2023 - Present</p>
+                <p>GPA 3.929/4</p>
+                <p>Fall 2023 Dean's List</p>
+            </div>
+        </div>
+        <div id="ed-card" class="card pulseBox hidden-right">
+            <figure>
+                <img src="/images/avc-logo.png" alt="AVC Logo">
+            </figure>
+            <div>
+                <h3>Antelope Valley College</h3>
+                <p>Associate of Science, Computer Science</p>
+                <p>Associate of Science, Mathematics</p>
+                <p>Associate of Science, Physics</p>
+                <p>Aug 2021 - May 2023</p>
+                <p>GPA 4/4</p>
+                <p>Summa Cum Laude</p>
+                <p>President's List 2021-2023</p>
+                <p>Subject Area Award for Computer Science</p>
+            </div>
+        </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="title hidden-left">Contact</h2>
+        <p class="hidden-right">For any inquiries please use the form below.</p>
+        <div>
+            <form id="form" action="https://formsubmit.co/pkallos19@gmail.com" method="POST">
+                <input name="email" type="text" placeholder="Email" id="email" class="item pulseBox input-field hidden-left"
+                    autocomplete="off" required>
+
+                <textarea name="message" id="message" placeholder="Message" class="item pulseBox input-field hidden-right"
+                    autocomplete="off" required></textarea>
+
+                <button type="submit" class="button-27 pulseBox hidden-left">Send Message</button>
+            </form>
+        </div>
+
+    </section>
+    <footer></footer>
+
+</body>
+
+</html>

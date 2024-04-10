@@ -1,0 +1,617 @@
+@font-face {
+    font-family: 'Poppins Regular';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins Bold';
+    src: url('fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+:root{
+  --text-color: white;
+  --bckgd-color: rgb(24, 28, 28);
+  --button-color: rgb(55, 152, 106);
+  --border-color: rgb(55, 152, 106);/*rgb(63, 63, 63); */
+  --bright-green: rgb(28, 255, 134);
+  --bubble-text: rgb(114, 189, 154); 
+  --easy-green-text: rgb(62, 207, 142);
+}
+
+.circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: rgb(255, 255, 255);
+  position: fixed; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999; /* so that it stays on top of all other elements */
+}
+
+/* FIXME: aura at bottom of screen extends it forever */
+.aura {
+  height: 76px;
+  width: 76px;
+  z-index: 9999;
+  background: var(--button-color);
+  background: radial-gradient(circle, rgba(62, 207, 142, 0.055) 10%,  rgba(255, 255, 255, 0) 70%);
+	background-repeat: no-repeat;
+	background-position: center;
+  position: absolute;
+  /* Allows mouse events to pass through aura */
+  pointer-events: none; 
+  overflow: hidden;
+    /* Add transition for smooth movement */
+  transition: top 0.3s, left 0.3s;
+  /* Add transition for fading out */
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+body{
+    background: var(--bckgd-color);
+    /*background-image: url("images/stars-background.jpg");*/
+    background-attachment: fixed;
+    background-size: cover;
+    /* Removes edge borders */
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins Regular';
+    overflow-x: hidden;
+}
+
+/* For all elements to slide in from left */
+.hidden-left {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+/* "" right */
+.hidden-right{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(100%);
+  transition: all 1s;
+}
+
+@media(prefers-reduced-motion){
+  .hidden-left{
+    transition: none;
+  }
+  .hidden-right{
+    transition: none;
+  }
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/*  
+    - Top Right Bottom Left (like a clock) for pixel attributes
+    margin = the space around the body
+    padding = the space inside the body
+*/
+
+/* Adjusts section sizes for correct auto-scroll */
+section::before {
+  content: "";
+  display: block;
+  /* Same height as navbar's padding */
+  height: 20px; 
+  /* Negative margin equal to height */
+  margin: -20px 0 0; 
+  /* Same height as navbar's padding */
+  padding-top: 20px; 
+  /* Negative margin equal to padding */
+  margin-top: -20px; 
+}
+
+/* Nav bar ------------ */
+header{
+    background: var(--bckgd-color);
+    /* Controls stacking order of elements */
+    z-index: 1000;
+    /* Creates sticky effect for nav bar */
+    position: sticky;
+    top: 0;
+}
+
+#navbar {
+  border-bottom: 1px solid var(--button-color);
+  padding: 20px;
+}
+
+#navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    display: inline-block;
+    margin: 0px 20px 0px 0px;
+    /* Animation smoothing */
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+#navbar li a{
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#navbar li:hover{
+    /*add animation to hover*/
+    transform: translateY(-4px);
+} 
+
+#navbar li:active{
+  transform: translateY(0);
+}
+
+@media only screen and (max-width: 1200px) {
+  #navbar li{
+    margin: 0px 5px 0px 0px;
+  }
+}
+/* ------------------------ */
+
+
+
+/* Intro ------------ */
+
+#intro {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+    text-align: center;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#intro h2{
+  color: var(--easy-green-text);
+}
+
+#intro ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#intro li {
+    display: inline-block;
+    margin: 0px 20px 0px 20px;
+}
+
+#intro li a{
+    text-align: center;
+    text-decoration: none;
+}
+
+/* "an undergraduate...." */
+.intro-anim-intro:nth-child(2){
+  transition-delay: 200ms;
+}
+/* "GitHub" button */
+.intro-anim-button{
+  transition-delay: 400ms;
+}
+
+/* Pulsing effect ----- (Credit: https://codepen.io/asp/pen/MWbxOz) ------*/
+@-webkit-keyframes pulseBox {
+  0% {-webkit-box-shadow: 0px 0px 4px 0px rgba(28, 255, 134, 0.6);}
+  100% {-webkit-box-shadow: 0px 0px 10px 0px rgba(28, 255, 134, 0.9);}
+}
+@-moz-keyframes pulseBox {
+  0% {-moz-box-shadow: 0px 0px 4px 0px rgba(28, 255, 134, 0.6);}
+  100% {-moz-box-shadow: 0px 0px 10px 0px rgba(28, 255, 134, 0.9);}
+}
+@-o-keyframes pulseBox {
+  0% {-o-box-shadow: 0px 0px 4px 0px rgba(28, 255, 134, 0.6);}
+  100% {-o-box-shadow: 0px 0px 10px 0px rgba(28, 255, 134, 0.9);}
+}
+@keyframes pulseBox {
+  0% {box-shadow: 0px 0px 4px 0px rgba(28, 255, 134, 0.6);}
+  100% {box-shadow: 0px 0px 10px rgba(28, 255, 134, 0.9);}
+}
+
+/*.pulseBox {
+  -webkit-animation-name: pulseBox;
+  -moz-animation-name: pulseBox;
+  -o-animation-name: pulseBox;
+  animation-name: pulseBox;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -moz-animation-direction: alternate;
+  -o-animation-direction: alternate;
+  animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+/*-----------*/
+
+/* Hover/Translation effect ----(Credit: https://getcssscan.com/css-buttons-examples) ----*/
+.button-27 {
+  appearance: none;
+  border-radius: 15px;
+  border-color: rgb(28, 255, 134);
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--button-color);
+  padding: 10px 15px 10px 15px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0;
+  min-width: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.button-27:hover {
+  /*box-shadow: rgba(100, 255, 167, 0.25) 0 8px 15px;*/
+  transform: translateY(-2px);
+  background-color: rgba(98, 255, 166, 0.445);;
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+  background-color: rgb(100, 255, 167);
+}
+/* -------------- */
+
+#intro h2 {
+    font-family: 'Poppins Bold';
+    font-size: 70px;
+    margin-bottom: 0px;
+}
+
+#intro p {
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.info {
+    margin-top: 20vh;
+}
+
+/* ------------------------ */
+
+
+/* Projects ------------ */
+
+#projects{
+  border-bottom: 1px solid var(--border-color);
+}
+
+#projects h2{
+    color: var(--text-color);
+    text-align: center;
+}
+
+.card{
+  background-color: rgb(24, 30, 28); /* Black background */
+  border-radius: 20px;
+  border: solid;
+  border-color: var(--bright-green);
+  border-width: 1px;
+  color: var(--text-color);
+  /* For responsive width (better than fixed width with margin/padding) */
+  max-width: 60%; 
+  /* First param = Top and Bottom, Second param = Right and Left -> left for auto, max-width manages it */
+  margin: 50px auto;
+  display: flex;
+}
+
+.card div{
+  /* Take up equal amount of space as figure (img)*/
+  flex: 1;
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.card div p{
+  font-size: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.card div h3{
+  margin: 0px;
+  padding: 0px;
+}
+
+.card div h4 ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card div h4 ul li{
+  display: inline-block;
+  /* Aligns logos so they're centered with respect to "Tools:" text */
+  vertical-align: middle;
+  margin: 4px;
+}
+
+.logo{
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease-in-out;
+}
+
+.logo:hover{
+  transform: scale(1.67); /* 50/30 = 1.67 */
+}
+
+.card div button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  /*box-shadow: 0 4px 8px rgba(0, 255, 135, 0.3); /* Green glow effect */
+}
+
+.card figure {
+  /* Take up equal amount of space as div (description)*/
+  flex: 1;
+  padding: 0px;
+  float: right;
+  overflow: hidden;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.card figure img{
+  border: 1px solid var(--bright-green);
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.proj-anim{
+  transition-delay: 200ms;
+}
+
+@media only screen and (max-width: 1200px) {
+  .card {
+    flex-direction: column;
+    max-width: 80%;
+  }
+}
+
+/* ------------------------ */
+
+/* Skills ------------ */
+@media only screen and (max-width: 1200px) {
+  /* TODO: realign logos */
+}
+#skills {
+    color: var(--text-color);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#skills div{
+  background-size: 100px;
+  border-radius: 20px;
+  border: 20px;
+  /* For responsive width (better than fixed width with margin/padding) */
+  max-width: 60%; 
+  /* First param = Top and Bottom, Second param = Right and Left -> left for auto, max-width manages it */
+  margin: 50px auto;
+  margin-top: 0px;
+  display: flex;
+}
+
+#skills div ul{
+  list-style-type: none;
+  margin: 40px;
+  padding: 0px;
+}
+
+#skills div ul li{
+  height: auto;
+  width: 90px;
+  display: inline-block;
+  /* Aligns logos so they're centered with respect to "Tools:" text */
+  vertical-align: middle;
+  margin: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+#skills div ul li figure{
+  text-align: center;
+  margin: 0;
+}
+
+#skills div ul li figure img{
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: 100%;
+}
+
+#skills div ul li figure figcaption{
+  margin-top: 10px;
+}
+
+#skills div ul li:hover{
+  transform: scale(1.30); 
+}
+
+/* ------------------------ */
+
+/* Education ------------ */
+#education{
+    color: var(--text-color);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#ed-card{
+  /* For responsive width (better than fixed width with margin/padding) */
+  max-width: 45%; 
+  max-height: 10%;
+  /* First param = Top and Bottom, Second param = Right and Left -> left for auto, max-width manages it */
+  /* Aligns items vertically and horizontally */
+  align-items: center;
+}
+
+
+#ed-card div h3{
+  margin-bottom: 10px;
+}
+
+#ed-card div p{
+  margin: auto;
+  padding: 5px;
+}
+
+#ed-card figure{
+  float: left;
+}
+
+#ed-card figure img{
+  border: 0px; 
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  #ed-card{
+    max-width: 95%;
+  }
+  #ed-card figure img{
+    max-width: 60%;
+  }
+}
+
+/* ------------------------ */
+
+/* Contact ------------ */
+#contact {
+  color: var(--text-color);
+  text-align: center;
+}
+
+#contact div{
+  max-width: 50%; 
+  /* First param = Top and Bottom, Second param = Right and Left -> left for auto, max-width manages it */
+  margin: 20px auto 50px auto;
+}
+
+#contact div form{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.input-field{
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  font-family: "Poppins Regular";
+  background: transparent;
+  background-color:rgba(28, 255, 134, 0.151);
+  color: var(--text-color);
+  border-color: rgb(100, 255, 167);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  transition: border-color 0.3s ease, background-color 0.4s ease, transform 0.4s ease;
+  resize: none;
+}
+
+.input-field:focus{
+  outline: none;
+  border-color: rgb(94, 94, 94);
+}
+
+#message{
+  height: 300px;
+}
+
+::placeholder{
+  color: var(--bubble-text);
+}
+
+#contact button{
+  margin-top: 20px;
+}
+/* ------------------------ */
+
+/* Misc ----------------- */
+section{
+    padding: 20px;
+    color: rgb(28, 255, 134);
+}
+
+/* Scrollbar */
+/* This applies to all scrollable elements */
+::-webkit-scrollbar {
+    width: 15px; /* width of the entire scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #303030; /* color of the tracking area */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--easy-green-text); /* color of the scroll thumb */
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(62, 207, 142, 0.747); /* color of the scroll thumb on hover*/
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.title{
+  font-family: "Poppins Regular";
+  font-size: 30px;
+  transition: 800ms;
+}
+/* ------------------------ */
